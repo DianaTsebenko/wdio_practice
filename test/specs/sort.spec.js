@@ -26,7 +26,6 @@ describe("Sort products by price", () => {
       const num = parseFloat(cleaned);
 
       if (isNaN(num)) {
-        console.warn(`Не вдалося розпізнати ціну з тексту "${text}"`);
         continue;
       }
 
