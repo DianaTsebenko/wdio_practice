@@ -1,5 +1,3 @@
-const { browser } = require("@wdio/globals");
-
 describe("Checkout Process", () => {
   it("should complete the checkout and show payment success message", async () => {
     const password = "Password123%pas";
@@ -11,8 +9,8 @@ describe("Checkout Process", () => {
       await $(".card").scrollIntoView();
       await $(".card").waitForClickable({ timeout: 3000 });
       await $(".card").click();
-      await $("#btn-add-to-cart").waitForDisplayed({ timeout: 5000 });
-      await $("#btn-add-to-cart").click();
+      await $('[data-test="add-to-cart"]').waitForClickable({ timeout: 3000 });
+      await $('[data-test="add-to-cart"]').click();
       await $(".toast-message").click();
       await $('[data-test="nav-cart"]').click();
       await $('[data-test="proceed-1"]').click();

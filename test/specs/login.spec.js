@@ -46,7 +46,6 @@ describe("Successful Sign-In", () => {
         "https://practicesoftwaretesting.com/account",
       {
         timeout: 5000,
-        timeoutMsg: "Не вдалося перейти на сторінку профілю",
       }
     );
 

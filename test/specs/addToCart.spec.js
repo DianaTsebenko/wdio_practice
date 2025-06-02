@@ -6,7 +6,8 @@ describe("Add product to cart", () => {
     await $(".card").waitForClickable({ timeout: 3000 });
     await $(".card").click();
 
-    await $("#btn-add-to-cart").click();
+    await $('[data-test="add-to-cart"]').waitForClickable({ timeout: 3000 });
+    await $('[data-test="add-to-cart"]').click();
 
     await expect($(".toast-message")).toHaveText(
       "Product added to shopping cart."
