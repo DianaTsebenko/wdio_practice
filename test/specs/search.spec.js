@@ -1,15 +1,21 @@
 describe("Search for a product", () => {
-  it("should return four types of pliers", async () => {
+  it("should return two types of saw", async () => {
     await browser.url("/");
-    await browser.pause(1000);
 
-    await $("#search-query").setValue("Pliers");
+    await $("#search-query").setValue("Saw");
     await $('[data-test="search-submit"]').click();
-    await browser.pause(1000);
+
+    await browser.waitUntil(
+      async () => {
+        const title = await $(".card-title").getText();
+        return title === "Wood Saw";
+      },
+      {
+        timeout: 3000,
+      }
+    );
 
     const results = await $$(".card");
-    await browser.pause(500);
-
-    expect(results.length).toBe(4);
+    expect(results.length).toBe(2);
   });
 });
