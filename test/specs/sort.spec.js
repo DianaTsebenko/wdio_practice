@@ -4,7 +4,15 @@ describe("Sort products by price", () => {
 
     const sortDropdown = await $('[data-test="sort"]');
     await sortDropdown.selectByVisibleText("Price (Low - High)");
-    await browser.pause(1500);
+
+    const firstCardTitle = await $$(".card-title")[0];
+    await browser.waitUntil(
+      async () => {
+        const text = await firstCardTitle.getText();
+        return text === "Washers";
+      },
+      { timeout: 3000 }
+    );
 
     const priceElements = await $$('[data-test="product-price"]');
 
